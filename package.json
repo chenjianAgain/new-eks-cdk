@@ -20,7 +20,14 @@
     "typescript": "~3.6.2"
   },
   "dependencies": {
+    "@aws-cdk/aws-ec2": "^1.14.0",
+    "@aws-cdk/aws-ecs": "^1.14.0",
+    "@aws-cdk/aws-ecs-patterns": "^1.14.0",
+    "@aws-cdk/aws-eks": "^1.14.0",
     "@aws-cdk/core": "^1.13.1",
+    "build": "^0.1.4",
+    "npm": "^6.12.0",
+    "run": "^1.4.0",
     "source-map-support": "^0.5.9"
   }
 }

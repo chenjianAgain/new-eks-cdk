@@ -4,7 +4,7 @@ import { Cluster, ContainerImage, FargateTaskDefinition } from '@aws-cdk/aws-ecs
 import { ApplicationLoadBalancedFargateService } from '@aws-cdk/aws-ecs-patterns';
 
 
-export class NewEksCdkStack extends cdk.Stack {
+export class Eks extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
