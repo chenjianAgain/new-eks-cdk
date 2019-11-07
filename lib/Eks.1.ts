@@ -32,5 +32,43 @@ export class Eks1 extends cdk.Stack {
     //     kubeletExtraArgs: '--node-labels foo=bar'
     //   },
     // })
+
+    const appLabel = { app: "hello-kubernetes" };
+
+    const deployment = {
+      apiVersion: "apps/v1",
+      kind: "Deployment",
+      metadata: { name: "hello-kubernetes" },
+      spec: {
+        replicas: 3,
+        selector: { matchLabels: appLabel },
+        template: {
+          metadata: { labels: appLabel },
+          spec: {
+            containers: [
+              {
+                name: "hello-kubernetes",
+                image: "amazon/amazon-ecs-sample:latest",
+                ports: [{ containerPort: 80 }]
+              }
+            ]
+          }
+        }
+      }
+    };
+
+    const service = {
+      apiVersion: "v1",
+      kind: "Service",
+      metadata: { name: "hello-kubernetes" },
+      spec: {
+        type: "LoadBalancer",
+        ports: [{ port: 80, targetPort: 80 }],
+        selector: appLabel
+      }
+    };
+
+    cluster.addResource('hello-kub', service, deployment);
+
   }
 }
